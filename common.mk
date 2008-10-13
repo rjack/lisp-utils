@@ -1,10 +1,10 @@
 .PHONY	: all clean
 
-all	: *.x86f
+all	: *.fas
 
-%.x86f	: %.lisp
-	lisp -quiet -eval '(compile-file "$<") (quit)'
+%.fas	: %.lisp
+	clisp -q -c $<
 
 
 clean	:
-	rm -f *.x86f
+	rm -f *.fas *.lib
