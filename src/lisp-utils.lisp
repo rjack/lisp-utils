@@ -1,6 +1,17 @@
 (defpackage :org.altervista.rjack.lisp-utils
   (:use :common-lisp)
-  (:export :seq))
+  (:export :seq :split))
+
+
+
+
+;;; Numbers
+
+
+(defun random-between (a b &optional (random-state *random-state*))
+  (+ a (random (+ 1 b a) random-state)))
+
+
 
 
 (defun seq (from to &key (continue? #'<)
@@ -19,3 +30,22 @@
 			       (cons from acc)
 			       acc))
       (nreverse acc)))
+
+
+
+
+;;; Strings
+
+
+(defun split (str &optional (sep-bag " "))
+  (labels ((separator-p (c)
+	     (find c sep-bag))
+	   (parse (str &optional (cut-start 0) (substrings (list)))
+	     (let ((cut-end (position-if #'separator-p str :start cut-start)))
+	       (if (null cut-end)
+		   (nreverse (cons (subseq str cut-start (length str))
+				   substrings))
+		   (parse str (1+ cut-end)
+			  (cons (subseq str cut-start cut-end)
+				substrings))))))
+    (parse str)))
