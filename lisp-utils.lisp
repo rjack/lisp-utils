@@ -1,8 +1,11 @@
 (defpackage :org.altervista.rjack.lisp-utils
+  (:nicknames :rlu)
   (:use :common-lisp)
   (:export :seq :split))
 
 
+
+(in-package :rlu)
 
 
 ;;; Numbers
