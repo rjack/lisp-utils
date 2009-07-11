@@ -12,7 +12,14 @@
 
 
 (defun random-between (a b &optional (random-state *random-state*))
-  (+ a (random (+ 1 b a) random-state)))
+  "Contract: number number random-state -> number
+
+   Purpose: to return a random number in the [a b] interval.
+
+   Notes: if a > b, the result is undefined."
+  (+ a (random (- (1+ b)
+		  a)
+	       random-state)))
 
 
 
