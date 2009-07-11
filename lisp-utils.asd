@@ -8,6 +8,6 @@
 (defsystem lisp-utils
     :name "lisp-utils"
     :author "Giacomo Ritucci"
-    :version "0.1"
+    :version "permanently alpha"
     :license "2 clauses BSD style, see COPYING file for details"
     :components ((:file "lisp-utils")))
