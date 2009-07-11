@@ -27,11 +27,13 @@
 (defpackage :org.altervista.rjack.lisp-utils
   (:nicknames :rlu)
   (:use :common-lisp)
-  (:export :seq :split))
-
+  (:export :random-between
+	   :collect
+	   :seq :split))
 
 
 (in-package :rlu)
+
 
 
 ;;; Numbers
@@ -47,6 +49,20 @@
 		  a)
 	       random-state)))
 
+
+
+;;; Lists
+
+(defun collect (size fn)
+  "Contract: (integer 0) function -> list
+
+   Purpose: to return a list of length SIZE filled with the results of
+            SIZE invocations of FUNCTION."
+
+  (declare ((integer 0) size)
+	   (function fn))
+  (loop :repeat size
+     :collecting (funcall fn)))
 
 
 
