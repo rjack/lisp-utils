@@ -28,7 +28,7 @@
   (:nicknames :rlu)
   (:use :common-lisp)
   (:export :random-between
-	   :collect
+	   :collect :random-pick
 	   :seq :split))
 
 
@@ -53,6 +53,18 @@
 
 
 ;;; Lists
+
+
+(defun random-pick (lst &optional (random-state *random-state*))
+  "Contract: list random-state -> element
+
+   Purpose: to return one of the list element, choosing randomly."
+
+  (declare (list lst))
+  (nth (random (length lst)
+	       random-state)
+       lst))
+
 
 (defun collect (size fn)
   "Contract: (integer 0) function -> list
