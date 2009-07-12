@@ -45,6 +45,7 @@
    Purpose: to return a random number in the [a b] interval.
 
    Notes: if a > b, the result is undefined."
+
   (+ a (random (- (1+ b)
 		  a)
 	       random-state)))
